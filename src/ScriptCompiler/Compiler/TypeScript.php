@@ -11,7 +11,7 @@ class TypeScript extends LanguageCompiler {
 	);
 
 	public function compile(Resource $resource) {
-		$command = "tsc {$this->flags} --out {$resource->hash} {$resource->path}";
+		$command = "tsc {$this->flags} --outFile {$resource->hash} {$resource->path}";
 		$this->execute($command);
 	}
 
