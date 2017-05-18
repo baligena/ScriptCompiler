@@ -1,5 +1,5 @@
 {
-	"name": "pwarelis/script-compiler",
+	"name": "baligena/script-compiler",
 	"description": "PHP web resource compiler and minifier",
 	"type": "library",
 	"license": "MIT",
