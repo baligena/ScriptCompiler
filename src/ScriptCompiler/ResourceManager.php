@@ -122,7 +122,8 @@ class ResourceManager {
 				fclose($fd);
 			}
 
-			$urls[$base] = "/cache/" . basename($script);
+			// $urls[$base] = "/cache/" . basename($script);
+			$urls[$base] = str_replace($_SERVER['DOCUMENT_ROOT'], '', $script);
 		}
 
 		return $urls;

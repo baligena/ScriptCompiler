@@ -21,7 +21,8 @@ class PathManager {
 
 	public function setDocumentRoot($path) {
 		if (!$path) $path = $_SERVER["DOCUMENT_ROOT"];
-		$this->docRoot = realpath($path);
+		// $this->docRoot = realpath($path);
+		$this->docRoot = $path;
 		if (!$this->docRoot) {
 			throw new \Exception("Document root is not a valid path: {$path}");
 		}

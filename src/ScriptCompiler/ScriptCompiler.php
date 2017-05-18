@@ -57,6 +57,7 @@ class ScriptCompiler {
 				'less' => 'ScriptCompiler\Compiler\Less',
 				'js' => 'ScriptCompiler\Compiler\UglifyJs2',
 				'coffee' => 'ScriptCompiler\Compiler\CoffeeScript',
+				'ts' => 'ScriptCompiler\Compiler\TypeScript'
 			)
 		);
 		return $this->mergeRecursive($defaults, $config);

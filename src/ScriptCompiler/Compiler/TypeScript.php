@@ -7,7 +7,7 @@ use ScriptCompiler\Resource;
 class TypeScript extends LanguageCompiler {
 	protected $baseLanguage = "js";
 	protected $defaults = array(
-		"removeComments"
+		// "removeComments"
 	);
 
 	public function compile(Resource $resource) {
