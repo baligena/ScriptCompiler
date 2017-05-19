@@ -7,7 +7,7 @@ use ScriptCompiler\Resource;
 class Sass extends LanguageCompiler {
 	protected $baseLanguage = "css";
 	protected $defaults = array(
-		"style" => "compressed",
+		// "style" => "compressed",
 		"stop-on-error",
 		"unix-newlines",
 		"precision" => 10

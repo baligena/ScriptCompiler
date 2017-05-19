@@ -104,7 +104,9 @@ class ResourceManager {
 				$baseList[$resource->base] = true;
 			}
 
-			$sets[$resource->base][] = array('hash'=>$resource->hash, 'path'=>$resource->path);
+			$sets[$resource->base][] = array('hash'=>$resource->hash
+											, 'path'=>$resource->path
+											);
 
 			if ($resource->modified > $lastModifyTime) {
 				$lastModifyTime = $resource->modified;
@@ -124,7 +126,9 @@ class ResourceManager {
 				$fd = fopen($script, "w");
 				foreach ($fileList as $file)
 				{
-					$content = ( $this->debug ? "// compiled from:".str_replace($_SERVER['DOCUMENT_ROOT'], '', $file['path'])." \n" : '' );
+					$content = ( $this->debug
+									? "/*\n * compiled from:".str_replace($_SERVER['DOCUMENT_ROOT'], '', $file['path'])."\n */\n"
+									: '' );
 					$content .= file_get_contents($file['hash']);
 					fwrite($fd, $content);
 				}
