@@ -20,7 +20,8 @@ class ScriptCompiler {
 
 		$this->_resources = new ResourceManager(array(
 			"types" => $config["types"],
-			"cache_remote" => $config["cache_remote"]
+			"cache_remote" => $config["cache_remote"],
+			"debug"=>$config["debug"]
 		));
 		$this->_resources->setCache($cache);
 		$this->_resources->setPathManager($paths);
@@ -51,6 +52,7 @@ class ScriptCompiler {
 			"cache" => "{$dc}/cache",
 			"aliases" => array(),
 			"cache_remote" => true,
+			"debug"=>false,
 			"types" => array(
 				'css' => 'ScriptCompiler\Compiler\Sass',
 				'scss' => 'ScriptCompiler\Compiler\Sass',

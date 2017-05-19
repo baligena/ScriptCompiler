@@ -19,10 +19,14 @@ class ResourceManager {
 	const SCRIPT_APPEND = 0;
 	const SCRIPT_PREPEND = 1;
 
+	private $now;
+	private $debug;
+
 	public function __construct($config) {
 		$this->now = time();
 		$this->types = $config["types"];
 		$this->cacheRemoteScripts = $config["cache_remote"];
+		$this->debug = $config["debug"];
 	}
 
 	public function setCache(DiscCache $cache) {
@@ -79,8 +83,8 @@ class ResourceManager {
 		return $this->compilers[$language];
 	}
 
-	public function compileResources($requestKey) {
-
+	public function compileResources($requestKey)
+	{
 		foreach ($this->resources as $resource) {
 			$compiler = $this->getCompiler($resource->language);
 			$compiler->compileResource($resource, $this->cache);
@@ -100,7 +104,7 @@ class ResourceManager {
 				$baseList[$resource->base] = true;
 			}
 
-			$sets[$resource->base][] = $resource->hash;
+			$sets[$resource->base][] = array('hash'=>$resource->hash, 'path'=>$resource->path);
 
 			if ($resource->modified > $lastModifyTime) {
 				$lastModifyTime = $resource->modified;
@@ -110,14 +114,19 @@ class ResourceManager {
 		$urls = array();
 
 		$masterCacheFile = $this->cache->buildFilename($requestKey+$lastModifyTime);
-		foreach ($sets as $base => $fileList) {
+		foreach ($sets as $base => $fileList)
+		{
 			$script = "{$masterCacheFile}.{$base}";
 
-			if (!file_exists($script)) {
+			if (!file_exists($script))
+			{
 				// Copy all the files over to the master script file
 				$fd = fopen($script, "w");
-				foreach ($fileList as $file) {
-					fwrite($fd, file_get_contents($file));
+				foreach ($fileList as $file)
+				{
+					$content = ( $this->debug ? "// compiled from:".str_replace($_SERVER['DOCUMENT_ROOT'], '', $file['path'])." \n" : '' );
+					$content .= file_get_contents($file['hash']);
+					fwrite($fd, $content);
 				}
 				fclose($fd);
 			}
