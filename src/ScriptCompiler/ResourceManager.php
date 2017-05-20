@@ -127,7 +127,7 @@ class ResourceManager {
 				foreach ($fileList as $file)
 				{
 					$content = ( $this->debug
-									? "/*\n * compiled from:".str_replace($_SERVER['DOCUMENT_ROOT'], '', $file['path'])."\n */\n"
+									? "/**\n * compiled from:".str_replace($_SERVER['DOCUMENT_ROOT'], '', $file['path'])."\n */\n"
 									: '' );
 					$content .= file_get_contents($file['hash']);
 					fwrite($fd, $content);
