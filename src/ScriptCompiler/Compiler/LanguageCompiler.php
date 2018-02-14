@@ -82,7 +82,7 @@ abstract class LanguageCompiler {
 			case 0:
 				return;
 			case 127:
-				throw new MissingCompilerException(get_called_class() . ": Resource compiler not found", $command);
+				throw new MissingCompilerException(get_called_class() . ": Resource compiler not found: '".$command."' ");
 			default:
 				$this->processError($return, $output, $command);
 		}
@@ -93,5 +93,4 @@ abstract class LanguageCompiler {
 		$error->setCompilerDetails($return, $output, $command);
 		throw $error;
 	}
-
 }

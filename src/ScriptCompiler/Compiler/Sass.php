@@ -17,5 +17,4 @@ class Sass extends LanguageCompiler {
 		$command = "sass {$this->flags} {$resource->path} {$resource->hash}";
 		$this->execute($command);
 	}
-
 }
