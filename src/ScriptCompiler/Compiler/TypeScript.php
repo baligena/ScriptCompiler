@@ -18,5 +18,4 @@ class TypeScript extends LanguageCompiler {
 		$command = "tsc {$this->flags} --outFile {$resource->hash} {$resource->path}";
 		$this->execute($command);
 	}
-
 }

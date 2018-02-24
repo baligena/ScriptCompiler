@@ -12,5 +12,4 @@ class MissingCompilerException extends \Exception {
 	final public function getCommand() {
 		return $this->command;
 	}
-
 }

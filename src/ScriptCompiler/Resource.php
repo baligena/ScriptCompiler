@@ -17,7 +17,7 @@ class Resource {
 
 	public function __construct($data) {
 		$this->url = $data["url"];
-		
+
 		$prependScheme = preg_match("/^\/\//", $this->url);
 		$this->isRemote = $prependScheme || parse_url($this->url, PHP_URL_HOST);
 		if ($prependScheme) {
