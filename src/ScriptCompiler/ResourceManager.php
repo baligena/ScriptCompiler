@@ -115,7 +115,7 @@ class ResourceManager {
 
 		$urls = array();
 
-		$masterCacheFile = $this->cache->buildFilename($requestKey+$lastModifyTime);
+		$masterCacheFile = $this->cache->buildFilename($requestKey.$lastModifyTime);
 		foreach ($sets as $base => $fileList)
 		{
 			$script = "{$masterCacheFile}.{$base}";
