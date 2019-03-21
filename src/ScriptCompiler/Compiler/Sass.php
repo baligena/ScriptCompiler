@@ -9,7 +9,7 @@ class Sass extends LanguageCompiler {
 	protected $defaults = array(
 		// "style" => "compressed",
 		"stop-on-error",
-		"unix-newlines",
+		// "unix-newlines",
 		"precision" => 10
 	);
 
